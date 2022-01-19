@@ -2,8 +2,8 @@
 
 This demo is integrating an echo canceller and keyword spotter on the [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) which is interacting with a model of the room acoustic implemented with [OpenModelica](https://www.openmodelica.org/)
 
-- [How to build and run the demo](Documentation/BUILDANDRUN.md)
-- [Understanding what is inside the demo](Documentation/DEMO.md)
+- [How to build and run the demo](EchoCanceller/Documentation/BUILDANDRUN.md)
+- [Understanding what is inside the demo](EchoCanceller/Documentation/DEMO.md)
 
 ## Quick introduction
 
