@@ -296,7 +296,7 @@ The result of the Microspeech is:
 
 #### In the console
 
-![console](console.PNG)
+![console](simulationOutput.PNG)
 
 #### In Modelica window
 
