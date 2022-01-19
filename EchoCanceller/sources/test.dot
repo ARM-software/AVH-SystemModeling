@@ -1,0 +1,302 @@
+
+
+
+digraph structs {
+    node [shape=plaintext]
+    edge [arrowsize=0.5]
+    fontname="times"
+
+
+
+
+aec [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="farMic"><FONT POINT-SIZE="9.0">farMic</FONT></TD>
+        <TD PORT="nearMic"><FONT POINT-SIZE="9.0">nearMic</FONT></TD>
+      </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="2">aec<BR/>(AEC)</TD>
+  </TR>
+  <TR>
+        <TD PORT="farSpeaker"><FONT POINT-SIZE="9.0">farSpeaker</FONT></TD>
+        <TD></TD>  </TR>
+</TABLE>>];
+
+
+
+allMics [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD></TD>    <TD></TD>    <TD></TD>    <TD></TD>  </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="4">allMics<BR/>(MicrophoneSource)</TD>
+  </TR>
+  <TR>
+        <TD PORT="farMic"><FONT POINT-SIZE="9.0">farMic</FONT></TD>
+        <TD PORT="nearMic1"><FONT POINT-SIZE="9.0">nearMic1</FONT></TD>
+        <TD PORT="nearMic2"><FONT POINT-SIZE="9.0">nearMic2</FONT></TD>
+        <TD PORT="seq"><FONT POINT-SIZE="9.0">seq</FONT></TD>
+      </TR>
+</TABLE>>];
+
+
+
+allSpeakers [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="farSpeaker"><FONT POINT-SIZE="9.0">farSpeaker</FONT></TD>
+        <TD PORT="nearSpeaker"><FONT POINT-SIZE="9.0">nearSpeaker</FONT></TD>
+        <TD PORT="seq"><FONT POINT-SIZE="9.0">seq</FONT></TD>
+      </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="3">allSpeakers<BR/>(SpeakerSink)</TD>
+  </TR>
+  <TR>
+        <TD></TD>    <TD></TD>    <TD></TD>  </TR>
+</TABLE>>];
+
+anr [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">anr<BR/>(ANR)</TD>
+  </TR>
+</TABLE>>];
+
+audioWin [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">audioWin<BR/>(SlidingBuffer)</TD>
+  </TR>
+</TABLE>>];
+
+
+
+beamFormer [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="ia"><FONT POINT-SIZE="9.0">ia</FONT></TD>
+        <TD PORT="ib"><FONT POINT-SIZE="9.0">ib</FONT></TD>
+      </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="2">beamFormer<BR/>(BeamFormer)</TD>
+  </TR>
+  <TR>
+        <TD PORT="o"><FONT POINT-SIZE="9.0">o</FONT></TD>
+        <TD></TD>  </TR>
+</TABLE>>];
+
+clamp [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">clamp<BR/>(Clamp)</TD>
+  </TR>
+</TABLE>>];
+
+
+
+dup [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="i"><FONT POINT-SIZE="9.0">i</FONT></TD>
+        <TD></TD>  </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="2">dup<BR/>(Duplicate)</TD>
+  </TR>
+  <TR>
+        <TD PORT="oa"><FONT POINT-SIZE="9.0">oa</FONT></TD>
+        <TD PORT="ob"><FONT POINT-SIZE="9.0">ob</FONT></TD>
+      </TR>
+</TABLE>>];
+
+
+
+dup2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="i"><FONT POINT-SIZE="9.0">i</FONT></TD>
+        <TD></TD>  </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="2">dup2<BR/>(Duplicate)</TD>
+  </TR>
+  <TR>
+        <TD PORT="oa"><FONT POINT-SIZE="9.0">oa</FONT></TD>
+        <TD PORT="ob"><FONT POINT-SIZE="9.0">ob</FONT></TD>
+      </TR>
+</TABLE>>];
+
+gain [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">gain<BR/>(Gain)</TD>
+  </TR>
+</TABLE>>];
+
+
+
+mfcc [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="ia"><FONT POINT-SIZE="9.0">ia</FONT></TD>
+        <TD PORT="ib"><FONT POINT-SIZE="9.0">ib</FONT></TD>
+      </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="2">mfcc<BR/>(MFCC)</TD>
+  </TR>
+  <TR>
+        <TD PORT="o"><FONT POINT-SIZE="9.0">o</FONT></TD>
+        <TD></TD>  </TR>
+</TABLE>>];
+
+mfccWin [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">mfccWin<BR/>(SlidingBuffer)</TD>
+  </TR>
+</TABLE>>];
+
+tflite [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">tflite<BR/>(TFLite)</TD>
+  </TR>
+</TABLE>>];
+
+
+
+window [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+        <TD PORT="i"><FONT POINT-SIZE="9.0">i</FONT></TD>
+        <TD></TD>  </TR>
+  <TR>
+    <TD ALIGN="CENTER" COLSPAN="2">window<BR/>(Window)</TD>
+  </TR>
+  <TR>
+        <TD PORT="oa"><FONT POINT-SIZE="9.0">oa</FONT></TD>
+        <TD PORT="ob"><FONT POINT-SIZE="9.0">ob</FONT></TD>
+      </TR>
+</TABLE>>];
+
+
+
+allMics:farMic -> dup:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+allMics:seq -> allSpeakers:seq [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >1</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >1</FONT>
+</TD></TR></TABLE>>,label="s16(1)"]
+
+dup:oa -> allSpeakers:nearSpeaker [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+dup:ob -> aec:farMic [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+allMicsDelay [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ALIGN="CENTER" PORT="i">6</TD>
+  </TR>
+</TABLE>>];
+
+
+allMics:nearMic1 -> allMicsDelay:i [taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>]
+
+allMicsDelay:i -> beamFormer:ia [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(134)"]
+
+
+allMics:nearMic2 -> beamFormer:ib [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+beamFormer:o -> aec:nearMic [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+aec:farSpeaker -> anr:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+anr:i -> gain:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+gain:i -> dup2:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+dup2:oa -> allSpeakers:farSpeaker [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(128)"]
+
+dup2:ob -> audioWin:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >320</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >128</FONT>
+</TD></TR></TABLE>>,label="s16(384)"]
+
+audioWin:i -> window:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >480</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >480</FONT>
+</TD></TR></TABLE>>,label="s16(480)"]
+
+window:oa -> mfcc:ia [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >480</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >480</FONT>
+</TD></TR></TABLE>>,label="s16(480)"]
+
+window:ob -> mfcc:ib [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >1</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >1</FONT>
+</TD></TR></TABLE>>,label="s16(1)"]
+
+mfcc:o -> clamp:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >40</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >40</FONT>
+</TD></TR></TABLE>>,label="s16(40)"]
+
+clamp:i -> mfccWin:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >200</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >40</FONT>
+</TD></TR></TABLE>>,label="s8(200)"]
+
+mfccWin:i -> tflite:i [headlabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >1960</FONT>
+</TD></TR></TABLE>>,taillabel=<
+<TABLE BORDER="0" CELLPADDING="2"><TR><TD><FONT COLOR="blue" POINT-SIZE="12.0" >1960</FONT>
+</TD></TR></TABLE>>,label="s8(1960)"]
+
+
+}

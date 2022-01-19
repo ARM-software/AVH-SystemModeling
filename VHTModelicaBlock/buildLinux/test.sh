@@ -1,0 +1,1 @@
+cmake -DTESTFEATURES=ON -G "Unix Makefiles" ..
