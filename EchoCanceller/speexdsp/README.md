@@ -39,7 +39,7 @@ For [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflo
 ## arch.h
 FIXED_POINT is defined at the beginning of the file 
 
-## mfc.c 
+## mdf.c 
 PLAYBACK_DELAY set to 3
 We have 2 buffers of delay due to the signal processing and one additional buffer of delay
 introduced by the virtual HW implemented in Python.

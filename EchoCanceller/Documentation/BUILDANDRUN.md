@@ -42,6 +42,8 @@ We are instead using the [KissFFT](https://github.com/mborgerding/kissfft) from 
 
 ## Building the Modelica Simulator and running the simulation
 
+### Installing Modelica
+
 To install [Modelica](https://www.openmodelica.org/), follow instruction from [Linux Modelica](https://www.openmodelica.org/download/download-linux) pages.
 
 Install **stable** . The demo is using `Modelica-4.0` library. It is not installed with the **release**
@@ -53,6 +55,10 @@ After installation, you can do:
 `apt-cache search "omlib-.*"`
 
 and look for a `Modelica-4.0` library. If you see it, then the next steps should work:
+
+### Running the Simulation
+
+Go to the `buildC` folder inside the `EchoCanceller` folder:
 
 `cd BuildC`
 
