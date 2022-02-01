@@ -32,6 +32,8 @@
 #define AEC 
 #define ANR 
 
+#define NOISE_REDUCTION_LEVEL 20
+
 
 SpeexEchoState *st=NULL;
 SpeexPreprocessState *den=NULL;
@@ -39,6 +41,9 @@ SpeexPreprocessState *den=NULL;
 void initSpeex()
 {
    int sampleRate = 16000;
+   #if defined(ANR) && defined(AEC)
+   const int noiseReductionLevel=NOISE_REDUCTION_LEVEL;
+   #endif
 	
 
 	
@@ -53,7 +58,7 @@ void initSpeex()
 
    #if defined(ANR) && defined(AEC)
     speex_preprocess_ctl(den, SPEEX_PREPROCESS_SET_ECHO_STATE, st);
-	 speex_preprocess_ctl(den, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS , (void*)(20));
+	 speex_preprocess_ctl(den, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS , (void*)&noiseReductionLevel);
    #endif
 
 }
