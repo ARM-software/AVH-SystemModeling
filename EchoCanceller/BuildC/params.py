@@ -44,7 +44,7 @@ elf=os.path.join(demoDir,"Objects/EchoCanceller.axf")
 
 vhtCommandLineOptions="-V %s -f %s -a %s" % (vsiDir, fvpConfig,elf)
 
-pathToVHT="/opt/arm_vsi/VHT-Corstone-300"
+pathToVHT="/opt/VHT/VHT_Corstone_SSE-300_Ethos-U55"
 
 farEndWav=os.path.join(soundFolder,"background.wav")
 nearEndWav=os.path.join(soundFolder,"yesno.wav")

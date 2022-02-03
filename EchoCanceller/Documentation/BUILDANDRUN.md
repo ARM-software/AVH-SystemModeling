@@ -1,5 +1,9 @@
 # BUILDING AND RUNNING THE DEMO
 
+You first need to run an ArmVirtualHardware-1.1.0 image from the  Amazon Web Services (AWS) Marketplace.
+
+Connect to your EC2 instance and follow the below explanations:
+
 ## Building the .axf to be run on the VHT
 
 `cd VHTModelicaDemos/EchoCanceller`
@@ -8,7 +12,7 @@ There is already a pre-built `EchoCanceller.axf` in `EchoCanceller/Objects` but 
 
 Install the [CMSIS](https://github.com/ARM-software/CMSIS_5) packs:
 
-`cp_install.sh packlist`
+`cpackget pack add -a -f packlist`
 
 Build the project
 
@@ -56,11 +60,13 @@ Install **stable** . The demo is using `Modelica-4.0` library. It is not install
 
 All libraries must be installed.
 
+You don't need to install the C++ runtime.
+
 After installation, you can do:
 
 `apt-cache search "omlib-.*"`
 
-and look for a `Modelica-4.0` library. If you see it, then the next steps should work:
+and look for a `Modelica-4.0` library. If you see it, then the next steps should work.
 
 ### Running the Simulation
 
