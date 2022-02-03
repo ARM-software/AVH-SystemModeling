@@ -16,6 +16,8 @@ Build the project
 
 ### Build settings
 
+This section is not required to build the demo. But, in case you may want to experiment with the code and change a few things, it is useful to know what compilation flags are used and why.
+
 The build is using the following defines:
 
 ```__FVP_PY ARM_DSP_CONFIG_TABLES ARM_FAST_ALLOW_TABLES ARM_FFT_ALLOW_TABLES ARM_TABLE_REALCOEF_Q15 ARM_TABLE_TWIDDLECOEF_Q15_256 ARM_TABLE_BITREVIDX_FXT_256 ARM_TABLE_TWIDDLECOEF_Q15_128 ARM_TABLE_BITREVIDX_FXT_128 ARM_ALL_FAST_TABLES ARM_MATH_LOOPUNROLL DISABLEFLOAT16```
@@ -28,15 +30,19 @@ The code is compiled with -O1. If you compile with optimizations, the code size 
 
 `-DMICROSPEECH` is defined on the `sources` folder to enable the calls to the [TFLite](https://github.com/tensorflow/tflite-micro) network.
 
-`-DHAVE_CONFIG_H -DOS_SUPPORT_CUSTOM` are defined on the `echocanceller` folder.
+`-DHAVE_CONFIG_H -DOS_SUPPORT_CUSTOM` are defined on the `echocanceller` folder. Those flags are used by the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) to include some configuration files.
 
-Note that the  [KissFFT](https://github.com/mborgerding/kissfft) CMSIS pack (one of the dependencies of [TFLite](https://github.com/tensorflow/tflite-micro) CMSIS pack) is not used. So, the pack manager in the MDK may display an error.
+Note that the  [KissFFT](https://github.com/mborgerding/kissfft) CMSIS pack (one of the dependencies of the [TFLite](https://github.com/tensorflow/tflite-micro) CMSIS pack) is not used. So, the pack manager in the MDK may display an error.
 
 We are instead using the [KissFFT](https://github.com/mborgerding/kissfft) from the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) because the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) has created some variants of the  [KissFFT](https://github.com/mborgerding/kissfft) APIs.
+
+In a future version, we will rework the  [KissFFT](https://github.com/mborgerding/kissfft) files in the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) to be able to use the CMSIS pack.
 
 
 
 ## Installing some Python modules
+
+Those modules are required for the script which is processing the output of the simulation and generating a plot.
 
 `python3.8 -m pip install numpy matplotlib DyMat scipy`
 
@@ -122,11 +128,13 @@ This command is not rebuilding the [Modelica](https://www.openmodelica.org/) sim
 You can also use the scripts with the option noecho
 
 - `sh buildAndRun.sh noecho`
-- `sh run.Sh noecho`
+- `sh run.sh noecho`
 
 With the option `noecho`, the [Modelica](https://www.openmodelica.org/) simulator used will be `Echo.WavEcho` instead of `Echo.VHTEcho`. This simulator is not using the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html). The VHT block is replaced by a pass-through block. The simulation will generate a `signalWithEcho.wav` with no echo cancellation. It is useful to have an idea of what is the signal with no pre-processing.
 
 This is not exactly the same signal has the one used by the VHT because the VHT signal processing chain is adding a small delay in the loop. So the far end source is slightly delayed compared to the simulation with no VHT.
+
+If you use the `run.sh` script, you must use the `buildAndRun.sh` script at least once before and with the same option.
 
 
 
