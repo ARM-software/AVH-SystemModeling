@@ -89,8 +89,8 @@ The [Modelica](https://www.openmodelica.org/) ARM libraries for this example (as
 
 If you are using the `OMEdit` UI, you need load:
 
-1. `VHTModelicaDemos/VHTModelicaBlock/ARM/package.mo`
-2. `VHTModelicaDemos/EchoCanceller/EchoCanceller.mo`
+1. `VHT-SystemModeling/VHTModelicaBlock/ARM/package.mo`
+2. `VHT-SystemModeling/EchoCanceller/EchoCanceller.mo`
 
 Also, you need to use `Modelica-4.0` library by default.
 
@@ -346,7 +346,7 @@ So the whole simulation will freeze. You can cancel the simulation in Modelica U
 
 The`VHT-Corstone.exe` may continue to run in the background. So, don't forget to kill it.
 
-When Modelica simulation is ending normally, the `VHT-Corstone.exe` process is terminated by the Modelica  [VHT block](https://gitlab.it.arm.com/chrfav01/vhtmodelicablock) 
+When Modelica simulation is ending normally, the `VHT-Corstone.exe` process is terminated by the Modelica  [VHT block](https://github.com/ARM-software/VHT-SystemModeling/tree/main/VHTModelicaBlock) 
 
 
 

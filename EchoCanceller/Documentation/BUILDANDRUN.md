@@ -6,7 +6,7 @@ Connect to your EC2 instance and follow the below explanations:
 
 ## Building the .axf to be run on the VHT
 
-`cd VHTModelicaDemos/EchoCanceller`
+`cd VHT-SystemModeling/EchoCanceller`
 
 There is already a pre-built `EchoCanceller.axf` in `EchoCanceller/Objects` but if you want to rebuild it:
 
@@ -89,15 +89,15 @@ This script will :
 During compilation of the [Modelica](https://www.openmodelica.org/) model to C code, you should see:
 
 ```
-"/home/ubuntu/VHTModelicaDemos/EchoCanceller/BuildC"
-"/home/ubuntu/VHTModelicaDemos/VHTModelicaBlock/ARM/package.mo"
-"/home/ubuntu/VHTModelicaDemos/EchoCanceller/EchoCanceller.mo"
+"/home/ubuntu/VHT-SystemModeling/EchoCanceller/BuildC"
+"/home/ubuntu/VHT-SystemModeling/VHTModelicaBlock/ARM/package.mo"
+"/home/ubuntu/VHT-SystemModeling/EchoCanceller/EchoCanceller.mo"
 true
 true
 true
 true
 true
-{"/home/ubuntu/VHTModelicaDemos/EchoCanceller/BuildC/Echo.VHTEcho","Echo.VHTEcho_init.xml"}
+{"/home/ubuntu/VHT-SystemModeling/EchoCanceller/BuildC/Echo.VHTEcho","Echo.VHTEcho_init.xml"}
 ```
 
 If you see any false, it means one of the commands in the script `echoLinux.mos` has failed.
