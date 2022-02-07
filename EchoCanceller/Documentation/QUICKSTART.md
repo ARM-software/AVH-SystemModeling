@@ -14,7 +14,7 @@ Connect to your EC2 instance and follow the below explanations.
 
 #### Install OpenModelica
 
-To install [Modelica](https://www.openmodelica.org/), follow instruction from [Linux Modelica](https://www.openmodelica.org/download/download-linux) pages for installation in the cloud.
+To install [OpenModelica](https://www.openmodelica.org/), follow instruction from [Linux OpenModelica](https://www.openmodelica.org/download/download-linux) pages for installation in the cloud.
 
 Install **stable** . The demo is using `Modelica-4.0` library. It is not installed with the **release**
 
