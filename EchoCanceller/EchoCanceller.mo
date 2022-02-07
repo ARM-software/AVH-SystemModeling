@@ -311,7 +311,7 @@ end WavEcho;
     model VHTCanceller
       extends Echo.Interfaces.EchoCanceller;
       ARM.Models.VHTMULTI vhtmulti(hasTF = true,launchVHT = true, samplingFrequency = 16,
-      tfSamplingFrequency=10, vhtCommandLine = "-V /home/ubuntu/VHTModelicaDemos/EchoCanceller/VSI/audio/python -f /home/ubuntu/VHTModelicaDemos/EchoCanceller/fvp_config.txt -a /home/ubuntu/VHTModelicaDemos/EchoCanceller/Objects/EchoCanceller.axf") annotation(
+      tfSamplingFrequency=10, vhtCommand="/opt/VHT/VHT_Corstone_SSE-300_Ethos-U55",vhtCommandLine = "-V /home/ubuntu/VHT-SystemModeling/EchoCanceller/VSI/audio/python -f /home/ubuntu/VHT-SystemModeling/EchoCanceller/fvp_config.txt -a /home/ubuntu/VHT-SystemModeling/EchoCanceller/Objects/EchoCanceller.axf") annotation(
         Placement(visible = true, transformation(origin = {6, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     equation
       connect(vhtmulti.ya, nearSpeaker) annotation(
@@ -401,17 +401,17 @@ end Test;
 
   model VHTEcho
     extends Echo.Interfaces.EchoCancellerArchitecture(redeclare replaceable Implementations.VHTCanceller echoCanceller, 
-    redeclare replaceable Implementations.WavSource farSource(gain = 55, path = "/home/ubuntu/VHTModelicaDemos/EchoCanceller/sounds/background.wav"), 
+    redeclare replaceable Implementations.WavSource farSource(gain = 55, path = "/home/ubuntu/VHT-SystemModeling/EchoCanceller/sounds/background.wav"), 
     redeclare replaceable Implementations.Micro farMic(), 
-    redeclare replaceable Implementations.WavSource nearSource(gain = 55, path = "/home/ubuntu/VHTModelicaDemos/EchoCanceller/sounds/yesno.wav"),
+    redeclare replaceable Implementations.WavSource nearSource(gain = 55, path = "/home/ubuntu/VHT-SystemModeling/EchoCanceller/sounds/yesno.wav"),
     redeclare replaceable Implementations.Micro nearMic1(gain=65), 
     redeclare replaceable Implementations.Micro nearMic2(gain=65),
-    redeclare replaceable Implementations.WavSpeaker farSpeaker(path = "/home/ubuntu/VHTModelicaDemos/EchoCanceller/BuildC/cleanedSignal.wav"), 
+    redeclare replaceable Implementations.WavSpeaker farSpeaker(path = "/home/ubuntu/VHT-SystemModeling/EchoCanceller/BuildC/cleanedSignal.wav"), 
     redeclare replaceable Implementations.PyRoomAcoustics roomEcho(
-    speakerToMic1RIR = "/home/ubuntu/VHTModelicaDemos/EchoCanceller/rir_speaker_mic1.csv",
-    nearSourceToMic1RIR="/home/ubuntu/VHTModelicaDemos/EchoCanceller/rir_nearsource_mic1.csv",
-    speakerToMic2RIR = "/home/ubuntu/VHTModelicaDemos/EchoCanceller/rir_speaker_mic2.csv",
-    nearSourceToMic2RIR="/home/ubuntu/VHTModelicaDemos/EchoCanceller/rir_nearsource_mic2.csv")
+    speakerToMic1RIR = "/home/ubuntu/VHT-SystemModeling/EchoCanceller/rir_speaker_mic1.csv",
+    nearSourceToMic1RIR="/home/ubuntu/VHT-SystemModeling/EchoCanceller/rir_nearsource_mic1.csv",
+    speakerToMic2RIR = "/home/ubuntu/VHT-SystemModeling/EchoCanceller/rir_speaker_mic2.csv",
+    nearSourceToMic2RIR="/home/ubuntu/VHT-SystemModeling/EchoCanceller/rir_nearsource_mic2.csv")
   , nearSpeaker.gain = 94);
   equation
 

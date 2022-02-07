@@ -1,0 +1,9 @@
+path:=cd();
+armPackagePath:= realpath(path + "/../../VHTModelicaBlock/ARM/package.mo");
+modelPath:=realpath(path + "/../EchoCanceller.mo");
+loadModel(Modelica,{"4.0"});
+loadFile(armPackagePath,"UTF-8",true,true,false);
+loadFile(modelPath,"UTF-8",true,true,false);
+setCommandLineOptions("+simCodeTarget=C");
+setCommandLineOptions("+ignoreCommandLineOptionsAnnotation=false");
+simulate(Echo.VHTEcho);

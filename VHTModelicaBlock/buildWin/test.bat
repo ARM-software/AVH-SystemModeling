@@ -1,0 +1,1 @@
+cmake -DCMAKE_EXE_LINKER_FLAGS="/manifest:no" -DTESTFEATURES=ON -G "Unix Makefiles" ..

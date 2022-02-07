@@ -2,6 +2,22 @@
 #include <stdlib.h>
 #include <math.h>
 
+#if !defined(TEST)
+#include "ModelicaUtilities.h"
+#include <stdio.h>
+#else
+#include <stdio.h>
+#endif
+
+#if defined(TEST)
+  #define ModelicaFormatError printf
+  #define ModelicaMessage printf
+  #define ModelicaFormatMessage printf
+  #define DEBUG printf
+#else
+  #define DEBUG(...) 
+#endif
+
 // http://soundfile.sapp.org/doc/WaveFormat/
 typedef struct WAVEHeader {
   uint32_t ChunkID;
@@ -61,6 +77,10 @@ long switchEndianism(long x)
 static size_t waveRead(void *ptr)
 {
    WAVE *wave = (WAVE*)ptr;
+   if (wave==NULL)
+   {
+     return(0);
+   }
    if (wave->remaining >= WAVE_BUF_NBSAMPLES)
    {
       size_t ret = fread((char*)wave->buf, SAMPLEFORMAT, WAVE_BUF_NBSAMPLES, wave->f);
@@ -89,6 +109,10 @@ static size_t waveRead(void *ptr)
 static void waveWrite(void *ptr)
 {
     WAVE *wave = (WAVE*)ptr;
+    if (wave==NULL)
+    {
+        return;
+    }
     wave->remaining += WAVE_BUF_NBSAMPLES*SAMPLEFORMAT;
     fwrite(wave->buf, SAMPLEFORMAT, WAVE_BUF_NBSAMPLES, wave->f);
     wave->posInBuf=0;
@@ -98,6 +122,10 @@ static void waveWrite(void *ptr)
 void closeWave(void *ptr)
 {
     WAVE *wave = (WAVE*)ptr;
+    if (wave==NULL)
+    {
+        return;
+    }
     if (wave->f != NULL)
     {     
         /* Write mode : we need to update the header before closing the file */
@@ -132,10 +160,16 @@ void *openWaveForReading(char *path)
   WAVE *wave;
 
   wave = (WAVE*)malloc(sizeof(WAVE));
+  if (wave==NULL)
+  {
+     ModelicaFormatError("Not enough memory to create wave structure\n");
+     return(NULL);
+  }
 
   wave->f = fopen(path, "rb");
   if (wave->f==NULL)
   {
+    ModelicaFormatError("Cannot open file for reading %s\n",path);
     free(wave);
     return(NULL);
   }
@@ -164,10 +198,16 @@ void *openWaveForWriting(char *path,uint32_t sampleRate)
   WAVE *wave;
 
   wave = (WAVE*)malloc(sizeof(WAVE));
+  if (wave==NULL)
+  {
+    ModelicaFormatError("Not enough memory to create wave structure\n");
+    return(NULL);
+  }
 
   wave->f = fopen(path, "wb");
   if (wave->f==NULL)
   {
+    ModelicaFormatError("Cannot open file for writing %s\n",path);
     free(wave);
     return(NULL);
   }
@@ -200,6 +240,10 @@ void *openWaveForWriting(char *path,uint32_t sampleRate)
 int readWavSample(void* ptr)
 {
     WAVE *wave = (WAVE*)ptr;
+    if (wave==NULL)
+    {
+      return(0);
+    }
     if (wave->posInBuf==WAVE_BUF_NBSAMPLES)
     {
       waveRead(wave);
@@ -212,6 +256,10 @@ int readWavSample(void* ptr)
 void writeWavSample(void *ptr,int writeSample)
 {
     WAVE *wave = (WAVE*)ptr;
+    if (wave==NULL)
+    {
+        return;
+    }
     if (wave->posInBuf==WAVE_BUF_NBSAMPLES)
     {
         waveWrite(wave);

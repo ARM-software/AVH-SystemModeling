@@ -190,6 +190,7 @@ void quitVHT(void * config)
     VHT *vht = (VHT *)config;
     if (vht->launchProcess)
     {
+        ModelicaMessage("Stop VHT\n");
 #if defined(WINDOWSVERSION)
         TerminateProcess(vht->p.hProcess,0);
  
@@ -360,6 +361,8 @@ void * createConfig(int launchVHT,
         char commandLine[1000];
         vht.launchProcess=1;
 
+        ModelicaMessage("Launch the VHT\n");
+
 #if defined(WINDOWSVERSION)
         STARTUPINFO si;
 
@@ -449,8 +452,16 @@ void * createConfig(int launchVHT,
             close(ListenSocket);
             return NULL;
         }
+        else
+        {
+            ModelicaFormatMessage("VHT PID %jd\n",(long int)vht.p);
+        }
 
 #endif
+    }
+    else
+    {
+        ModelicaMessage("Wait for VHT to start\n");
     }
 
     /* Wait for connections */

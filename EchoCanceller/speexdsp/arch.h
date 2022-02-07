@@ -35,7 +35,7 @@
 #ifndef ARCH_H
 #define ARCH_H
 
-#define FIXED_POINT
+#define FIXED_POINT 16
 //#define FLOATING_POINT
 
 /* A couple test to catch stupid option combinations */

@@ -292,8 +292,8 @@ void spx_ifft(void *table, spx_word16_t *in, spx_word16_t *out)
 
 #elif defined(USE_KISS_FFT)
 
-#include "kiss_fftr.h"
-#include "kiss_fft.h"
+#include "speexdsp_kiss_fftr.h"
+#include "speexdsp_kiss_fft.h"
 
 struct kiss_config {
    kiss_fftr_cfg forward;
@@ -305,8 +305,8 @@ void *spx_fft_init(int size)
 {
    struct kiss_config *table;
    table = (struct kiss_config*)speex_alloc(sizeof(struct kiss_config));
-   table->forward = kiss_fftr_alloc(size,0,NULL,NULL);
-   table->backward = kiss_fftr_alloc(size,1,NULL,NULL);
+   table->forward = speexdsp_kiss_fftr_alloc(size,0,NULL,NULL);
+   table->backward = speexdsp_kiss_fftr_alloc(size,1,NULL,NULL);
    table->N = size;
    return table;
 }
@@ -326,7 +326,7 @@ void spx_fft(void *table, spx_word16_t *in, spx_word16_t *out)
    int shift;
    struct kiss_config *t = (struct kiss_config *)table;
    shift = maximize_range(in, in, 32000, t->N);
-   kiss_fftr2(t->forward, in, out);
+   speexdsp_kiss_fftr2(t->forward, in, out);
    renorm_range(in, in, shift, t->N);
    renorm_range(out, out, shift, t->N);
 }
@@ -335,7 +335,7 @@ void spx_unnormalized_fft(void *table, spx_word16_t *in, spx_word16_t *out)
 {
    int shift;
    struct kiss_config *t = (struct kiss_config *)table;
-   kiss_fftr(t->forward, in, (kiss_fft_cpx*)out);
+   speexdsp_kiss_fftr(t->forward, in, (kiss_fft_cpx*)out);
 }
 
 #else
@@ -355,7 +355,7 @@ void spx_fft(void *table, spx_word16_t *in, spx_word16_t *out)
 void spx_ifft(void *table, spx_word16_t *in, spx_word16_t *out)
 {
    struct kiss_config *t = (struct kiss_config *)table;
-   kiss_fftri2(t->backward, in, out);
+   speexdsp_kiss_fftri2(t->backward, in, out);
 }
 
 #elif defined(USE_CMSISDSP_FFT)

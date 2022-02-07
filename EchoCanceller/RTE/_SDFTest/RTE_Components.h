@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'OrtaEchoCanceller' 
+ * Project: 'EchoCanceller' 
  * Target:  'SDFTest' 
  */
 
@@ -32,6 +32,8 @@
 #define RTE_DataExchange_Serialization_flatbuffers     /* flatbuffers */
 /* tensorflow::Data Processing:Math:gemmlowp fixed-point:tensorflow:1.0.0 */
 #define RTE_DataExchange_Math_gemmlowp     /* gemmlowp */
+/* tensorflow::Data Processing:Math:kissfft:tensorflow:1.4.5 */
+#define RTE_DataExchange_Math_kissfft     /* kissfft */
 /* tensorflow::Data Processing:Math:ruy:tensorflow:1.12.0 */
 #define RTE_DataProcessing_Math_ruy     /* ruy */
 /* tensorflow::Machine Learning:TensorFlow:Kernel:CMSIS-NN:0.2.20210719 */

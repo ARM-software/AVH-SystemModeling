@@ -15,6 +15,7 @@
 import logging
 import socket
 import message as msg
+from error import sockErrorRead,sockErrorWrite
 
 SERVER=True
 HOST = '127.0.0.1'    # The remote host
@@ -147,7 +148,7 @@ def wrDMA(index, value):
 def rdDataDMA(size):
     #logging.info("Python function rdDataDMA() called")
 
-    data = bytearray(0)
+    data = bytearray(size)
     #logging.debug("Read data ({} bytes)".format(size))
 
     return data
@@ -156,6 +157,7 @@ def rdDataDMA(size):
 ## Write data to peripheral for DMA M2P transfer (VSI DMA)
 #  @param data data to write (bytearray)
 #  @param size size of data to write (in bytes, multiple of 4)
+@sockErrorWrite
 def wrDataDMA(data, size):
     global s
     logging.info("Python function wrDataDMA() called")

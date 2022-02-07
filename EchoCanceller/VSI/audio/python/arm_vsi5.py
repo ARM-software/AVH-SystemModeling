@@ -15,6 +15,7 @@
 import logging
 import socket
 import message as msg
+from error import sockErrorRead,sockErrorWrite,sockErrorWriteValue
 
 SERVER=True
 HOST = '127.0.0.1'    # The remote host
@@ -146,7 +147,7 @@ def wrDMA(index, value):
 #  @param size size of data to read (in bytes, multiple of 4)
 #  @return data data read (bytearray)
 def rdDataDMA(size):
-    data = bytearray(0)
+    data = bytearray(size)
     
     return data
 
@@ -161,6 +162,7 @@ def wrDataDMA(data, size):
 
     return
 
+@sockErrorWriteValue
 def wrOUTPUT(value):
     logging.debug("Send data to Modelica");
     if SERVER:
@@ -175,8 +177,8 @@ def wrOUTPUT(value):
            logging.debug(theBytes)
            msg.sendBytes(s,theBytes)
         except Exception as e:
-           logging.error("Exception %d" % value)
-           logging.error(e)
+           #logging.error("Exception %d" % value)
+           #logging.error(e)
            msg.sendBytes(s,bytes([0,0]))
     else:
         logging.debug("%d",value)

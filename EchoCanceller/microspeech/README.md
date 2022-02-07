@@ -28,16 +28,12 @@ As consequence, most of include paths have been changed.
 
 ### fft.cc
 Removed microfrontend [KissFFT](https://github.com/mborgerding/kissfft) header to use the [KissFFT](https://github.com/mborgerding/kissfft) from libspeex.
-It looks like the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) [KissFFT](https://github.com/mborgerding/kissfft) package has a bit more things inside and
+The [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) [KissFFT](https://github.com/mborgerding/kissfft) package has a bit more things inside and
 when building with the [KissFFT](https://github.com/mborgerding/kissfft)  CMSIS pack it was not building. 
-
-`kiss_fftr2` is in  [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) but not in official [KissFFT](https://github.com/mborgerding/kissfft) 
 
 So, we are no more using the [KissFFT](https://github.com/mborgerding/kissfft)  CMSIS pack, and instead relying on the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp)  [KissFFT](https://github.com/mborgerding/kissfft) .
 
 The `Fffstate` is removed and instead we directly use the `void *` from the  [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp)  FFT wrapper.
-
-This file will be modified again when we start using CMSIS-DSP FFT.
 
 `FFtIni`t and `FFtReset` are no more used
 
@@ -175,6 +171,6 @@ It could be in a different file not related to audioDriver to make things cleane
 #### windowNode.h 
 
 Generate window coefficients and multiply samples by windows.
-MVE code used.
+`MVE` code used.
 Used to be in `window.c` in the microfrontend
 

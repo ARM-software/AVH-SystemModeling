@@ -1,8 +1,23 @@
 #include "fir.h"
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
+
+#if !defined(TEST)
+#include "ModelicaUtilities.h"
+#include <stdio.h>
+#else
+#include <stdio.h>
+#endif
+
+#if defined(TEST)
+  #define ModelicaFormatError printf
+  #define ModelicaMessage printf
+  #define ModelicaFormatMessage printf
+  #define DEBUG printf
+#else
+  #define DEBUG(...) 
+#endif
 
 #define STRBUFSIZE 256
 static char temp[STRBUFSIZE];
@@ -12,6 +27,10 @@ static int getLine(FILE *f)
     int done=0;
     int eofOccured=0;
     int nb=0;
+    if (f==NULL)
+    {
+        return(0);
+    }
     while((!done) && (nb < STRBUFSIZE-1))
     {
         int c = fgetc(f);
@@ -47,9 +66,12 @@ static int getLine(FILE *f)
 
 void closeFIR(FIR *fir)
 {
-    free(fir->coefs);
-    free(fir->state);
-    free(fir);
+    if (fir)
+    {
+      free(fir->coefs);
+      free(fir->state);
+      free(fir);
+    }
 }
 
 FIR *newFIR(char *csvPath)
@@ -57,6 +79,11 @@ FIR *newFIR(char *csvPath)
     int nbLines=0;
     int done=0;
     FILE *f=fopen(csvPath,"r");
+    if (f==NULL)
+    {
+        ModelicaFormatError("Cannot open file for reading %s\n",csvPath);
+        return(NULL);
+    }
     while(!done)
     {
         int res=getLine(f);
@@ -73,6 +100,11 @@ FIR *newFIR(char *csvPath)
     fclose(f);
     
     FIR *fir=malloc(sizeof(FIR));
+    if (fir==NULL)
+    {
+        ModelicaFormatError("Cannot allocate FIR datastructure\n");
+        return(NULL);
+    }
     fir->nbTaps=nbLines;
     fir->pos=0;
     fir->coefs=malloc(sizeof(double)*nbLines);
@@ -81,6 +113,13 @@ FIR *newFIR(char *csvPath)
     memset(fir->state,0,sizeof(double)*nbLines);
 
     f=fopen(csvPath,"r");
+    if (f==NULL)
+    {
+        ModelicaFormatError("Cannot open file for reading %s\n",csvPath);
+        free(fir);
+        return(NULL);
+    }
+
     int i=0;
     done=0;
     while(!done)
@@ -109,6 +148,10 @@ FIR *newFIR(char *csvPath)
 
 double filterSample(FIR *fir,double sample)
 {
+   if (fir==NULL)
+   {
+     return(sample);
+   }
    memmove(fir->state+1,fir->state,sizeof(double)*(fir->nbTaps-1));
    fir->state[0] = sample;
    double y=0;

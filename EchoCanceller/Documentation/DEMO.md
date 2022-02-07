@@ -2,12 +2,14 @@
 
 ## Introduction
 
+This demo is integrating software for an echo canceller and keyword spotting. The code is running on a Cortex-M55 on the [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT). The VHT is interacting with a model of the room acoustic implemented with [OpenModelica](https://www.openmodelica.org/).
+
 The simulation is containing two simulators:
 
-- The [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT) where the M55 application is run
-- The [OpenModelica](https://www.openmodelica.org/) model as a digital twin and implementing a model of the world
+- The [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT) where the Cortex-M55 application is run
+- The simulator generated with  [OpenModelica](https://www.openmodelica.org/). It is implementing a model of the room acoustic : it is a digital twin
 
-The [OpenModelica](https://www.openmodelica.org/) simulator is launching the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html).
+The simulator is launching the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html).
 
 The [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) is connecting to the [Modelica](https://www.openmodelica.org/) simulator using sockets.
 
@@ -169,7 +171,7 @@ The easier way to do it is by:
 
 - Packaging all micros in a big node
 - Packaging all speaker in a big node
-- Addind a data flow dependency between those two nodes
+- Adding a data flow dependency between those two nodes
 
 The edge with a FIFO of size 1 between `allMics` and `allSpeakers` is enforcing the constraint.
 
@@ -177,7 +179,7 @@ The edge with a FIFO of size 1 between `allMics` and `allSpeakers` is enforcing 
 
 It is the MFCC like processing done by the original Microspeech example.
 
-It is doing a bit more than just a MFCC since there is some noise reduction and gain control.
+It is doing a bit more than just a MFCC since there is some noise reduction and gain control so in original Microspeech it is not named MFCC.
 
 #### Recognition frequency
 
@@ -280,9 +282,9 @@ The README in the microspeech folder is listing all changes done to the microspe
 
 The files in this folder are covered by Microspeech license.
 
-We are not using the Kiss FFT from Microspeech but the one from speex which normally is the same. But `speex` is adding a variation on the API.
+We are not using the Kiss FFT from Microspeech but the one from `speex` which normally is the same. But `speex` is adding a variation on the API. The current CMSIS-Packs used for TFLite have a dependency on the KissFFT pack.  To avoid name conflict, the KissFFT in libspeex has been renamed to speexdsp_kiss_fft
 
-So, pack manager will show a dependency error since Kiss FFT is not selected and it is a dependency of the Tensor Flow pack.
+
 
 Compared to the original microspeech example  the code has been split into separate signal processing nodes which are used in the SDF computation graph.
 
@@ -298,7 +300,7 @@ The result of the Microspeech is:
 
 ![console](simulationOutput.PNG)
 
-#### In Modelica window
+#### From Modelica simulation:
 
 There maybe a delta of up to 0.1 s between the console and the Modelica plot because console output is asynchronous and displayed as soon as the word has been recognized. Modelica output is sampled at 10 Hz for the TFLite recognition. So the output change will occur on the next sampling event.
 
@@ -340,24 +342,7 @@ So real-time is important. If real-time is not respected you may have data corru
 
 You may have to increase the clock in `fvp_config.txt` and `debug.ini`.
 
-When the SDF scheduling is stopping (because of FIFO underflow or overflow), the communication between VHT <-> Modelica is stopping too (DMA are disabled).
+If the SDF scheduling is stopping (because of FIFO underflow or overflow), the communication between VHT <-> Modelica is stopping too (DMA are disabled).
 
-So the whole simulation will freeze. You can cancel the simulation in Modelica UI.
+So the whole simulation will freeze since the Modelica simulator will be waiting for data which is not coming.
 
-The`VHT-Corstone.exe` may continue to run in the background. So, don't forget to kill it.
-
-When Modelica simulation is ending normally, the `VHT-Corstone.exe` process is terminated by the Modelica  [VHT block](https://github.com/ARM-software/VHT-SystemModeling/tree/main/VHTModelicaBlock) 
-
-
-
-## Before trying to run the demo with the OMEdit UI
-
-The path in the `VHTEcho` model must be changed to point to the right `wav` files and right`.csv` for the filters.
-
-The model class `Implementation\VHTCanceller` must be opened, and parameters of the VHTQuadri block must be changed:
-
-* Path to the VHT
-* Enabling TF output 
-* Launching VHT automatically or (if you want the TFLite trace) let it to false and launch the VHT from a console after Modelica has started the simulation.
-
-If the simulation is launched from command line using the script, the parameters will be edited automatically in the `.xml` file using a Python script.

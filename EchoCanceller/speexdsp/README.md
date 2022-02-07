@@ -24,16 +24,22 @@ Some files have been modified compared to the orignal as detailed below.
 
 # CHANGES
 
+## speexdsp_kiss_fft
+
+The CMSIS Packs used for TensorFlow Lite have a dependency on the KissFFT pack.
+
+So, this pack will be built even if not used.
+
+To avoid name conflicts, the KissFFT in speexDSP has been renamed to `speexdsp_kiss_fft`.
+
+Note that this version is also introducing 2 new functions not available in the original KissFFT: `speexdsp_kiss_fftr2` and `speexdsp_kiss_fftri2`.
+
 ## fft_wrap.h
 
 Added `#define` to be able to include it from C++ side
 Added API for fft without normalization for use by [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech).
 
 To make it easier, in the future, to replace the [KissFFT](https://github.com/mborgerding/kissfft) by another one, [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) is using the FFT wrapper inside the speex library.
-
-But, the speex library is exporting a different function which is a variation on the original [KissFFT](https://github.com/mborgerding/kissfft) API.
-
-For [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) we do not want to use this variation but only the original [KissFFT](https://github.com/mborgerding/kissfft) . So, a new API has been added to the wrapper.
 
 
 ## arch.h

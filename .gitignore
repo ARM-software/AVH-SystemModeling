@@ -1,1 +1,15 @@
 __pycache__/
+EchoCanceller/Objects/*.d
+EchoCanceller/Objects/*.o
+EchoCanceller/Objects/*.htm
+EchoCanceller/Objects/*.lnp
+EchoCanceller/Objects/*.dep
+EchoCanceller/Objects/*.__i
+EchoCanceller/BuildC/*.o 
+EchoCanceller/BuildC/*.c
+EchoCanceller/BuildC/Echo.VHTEcho*
+EchoCanceller/BuildC/cleanedSignal.wav
+EchoCanceller/BuildC/YesNoResult.png
+EchoCanceller/DebugConfig/
+EchoCanceller/Listings/
+EchoCanceller/EventRecorderStub.scvd
