@@ -13,3 +13,17 @@ EchoCanceller/BuildC/YesNoResult.png
 EchoCanceller/DebugConfig/
 EchoCanceller/Listings/
 EchoCanceller/EventRecorderStub.scvd
+EchoCanceller/Objects/.ninja_deps
+EchoCanceller/Objects/.ninja_log
+EchoCanceller/Objects/CMakeCache.txt
+EchoCanceller/Objects/CMakeFiles/
+EchoCanceller/Objects/CMakeLists.txt
+EchoCanceller/Objects/EchoCanceller.MainApp.clog
+EchoCanceller/Objects/EchoCanceller.axf.map
+EchoCanceller/Objects/EchoCanceller.bin
+EchoCanceller/Objects/EchoCanceller.hex
+EchoCanceller/Objects/build.ninja
+EchoCanceller/Objects/cmake_install.cmake
+EchoCanceller/Objects/compile_commands.json
+EchoCanceller/RTE/_EchoCanceller.MainApp
+

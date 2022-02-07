@@ -86,7 +86,7 @@ if args.m=="Echo.VHTEcho":
    print(vhtNode.attrib)
 
    # Set launch VHT mode
-   vhtNode=setBoolean('echoCanceller.vhtmulti.launchVHT',"false")
+   vhtNode=setBoolean('echoCanceller.vhtmulti.launchVHT',"true")
    
    # Set path to VHT
    vhtNode=setString('echoCanceller.vhtmulti.vhtCommand',pathToVHT)
