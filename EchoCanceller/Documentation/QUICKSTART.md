@@ -8,6 +8,10 @@ You first need to run an ArmVirtualHardware-1.1.0 image from the  Amazon Web Ser
 
 Connect to your EC2 instance and follow the below explanations.
 
+#### Clone the repository
+
+`git clone https://github.com/ARM-software/VHT-SystemModeling.git`
+
 #### Install additional python packages
 
 `python3.8 -m pip install numpy matplotlib DyMat scipy`
@@ -24,9 +28,9 @@ You don't need to install the C++ runtime.
 
 After installation, you can do:
 
-`apt-cache search "omlib-.*"`
+`apt-cache search "omlib-.*" | grep "omlib-modelica-4.0.0"`
 
-and look for a `Modelica-4.0` library. If you see it, then the next steps should work.
+and look for a `Modelica 4.0.0` library. If you see it, then the next steps should work.
 
 #### Build .axf
 

@@ -38,13 +38,17 @@ You don't need to install the C++ runtime.
 
 After installation, you can do:
 
-`apt-cache search "omlib-.*"`
+`apt-cache search "omlib-.*" | grep "omlib-modelica-4.0.0"`
 
-and look for a `Modelica-4.0` library. If you see it, then the next steps should work.
+and look for a `Modelica 4.0.0` library. If you see it, then the next steps should work.
 
 #### On Windows
 
 Just get the [Windows version](https://www.openmodelica.org/download/download-windows)
+
+## Clone the repository
+
+`git clone https://github.com/ARM-software/VHT-SystemModeling.git`
 
 ## Building the .axf to be run on the VHT with CMSIS command line tools
 
@@ -155,7 +159,7 @@ You can re-run the simulation with the command:
 
 `sh run.sh`
 
-This command is not rebuilding the [Modelica](https://www.openmodelica.org/) simulator but just updating the parameters and launching the demo.
+This command is not rebuilding the [Modelica](https://www.openmodelica.org/) simulator but just updating the parameters and launching the demo. Therefore, if you change some parameters in the Python script `params.py`, you just need to relaunch the simulation with `run.sh`. No need to rebuild a simulator.
 
 You can also use the scripts with the option noecho
 
@@ -178,11 +182,11 @@ Go to the `EchoCanceller\BuildC` folder and type the command:
 
 It will compile the Modelica model to C, compile the C and launch a simulation which will quickly fail because the default paths are not right.
 
-Then you can edit the `params.py` script to edit the paths and launch `run.bat` script to launch the simulation again.
+Then you can edit the `params.py` script, in `BuildC` folder, to edit the paths and launch `run.bat` script to launch the simulation again.
 
-The difference between `echoLinux.mos` and `echoWindow.mos` is that `echoLinux.mos` is using the command [OpenModelica](https://www.openmodelica.org/) command `buildModel(Echo.VHTEcho)` to generate the C. And then, you need to use `make`.
+The difference between `echoLinux.mos` and `echoWindow.mos` is that `echoLinux.mos` is using the OpenModelica](https://www.openmodelica.org/) command `buildModel(Echo.VHTEcho)` to generate the C. And then, you need to use `make`.
 
-On Windows, the `clang` needed for building with `make` is inside the [OpenModelica](https://www.openmodelica.org/) folders but not easy to use (paths to set etc ...). So, instead the script is replacing the `build` command by `simulate(Echo.VHTEcho);`
+On Windows, the `clang` needed for building with `make` is inside the [OpenModelica](https://www.openmodelica.org/) folders but not easy to use (paths to set etc ...). So, instead the script is replacing the `buildModel` command by `simulate(Echo.VHTEcho);`
 
 This `simulate` command is also building the C with the [OpenModelica](https://www.openmodelica.org/) `clang`. Like that it is easier to build the `.exe` 
 
@@ -190,13 +194,15 @@ The only problem is that it is launching a simulation before we have the opportu
 
 ## Building from OpenModelica OMEdit graphical user interface
 
+If you don't want to use the command line for building and running the simulation, you can use the  [OpenModelica](https://www.openmodelica.org/) graphical user interface `OMEdit`
+
 If you're building in the cloud, you need to connect with [VNC](https://arm-software.github.io/VHT/main/infrastructure/html/run_ami_local.html#use_vnc) as explained on our [documentation](https://arm-software.github.io/VHT/main/infrastructure/html/run_ami_local.html#use_vnc)
 
-On Linux, to be sure the paths are set correctly and the VHT libraries can be found by [OpenModelica](https://www.openmodelica.org/), you need to launch OMEdit from a shell. Here is the expected output when you do it in the cloud:
+On Linux, to be sure the paths are set correctly and the VHT libraries can be found by [OpenModelica](https://www.openmodelica.org/), you need to launch `OMEdit` from a shell. Here is the expected output when you do it in the cloud (the IP displayed will depend on your VM in the cloud):
 
 ![LaunchOMEditFromShell](LaunchOMEditFromShell.PNG)
 
-The first time OMEdit is launched, it will ask for which version of the Modelica standard library to use. You need to select version 4.0:
+The first time `OMEdit` is launched, it will ask for which version of the Modelica standard library to use. You need to select version 4.0:
 
 
 
@@ -208,30 +214,30 @@ Then, you need to load the ARM package using the File -> Open Model/Library File
 
 ![SelectARMPackage](SelectARMPackage.PNG)
 
-Finally, you can open the EchoCanceller.mo model found in the folder EchoCanceller. Use the same menu command : File -> Open Model/Library File(s)
+Finally, you can open the `EchoCanceller.mo` model found in the folder `EchoCanceller`. Use the same menu command : File -> Open Model/Library File(s)
 
 If you got the project from github and installed in your home in the cloud, the paths are correct.
 
 Otherwise, you'll need to edit the absolute paths.
 
-Open the VHTEcho block. Select the source code view and edit the paths:
+Open the `VHTEcho` block. Select the source code view and edit the paths:
 
 ![HardCodedPathInVHTEcho](HardCodedPathInVHTEcho.PNG)
 
-Then, open the VHTCanceller block in the package Implementations and edit the paths:
+Then, open the `VHTCanceller` block in the package `Implementations` and edit the paths:
 
 ![PathVHTCanceller](PathVHTCanceller.PNG)
 
 Once the paths are correct, you can then :
 
-- Open the VHTEcho block in the Modeling perspective
+- Open the `VHTEcho` block in the Modeling perspective
 - Click on the `S` button in the top bar to launch a simulation.
 
 Try first with a 1 second simulation to see if it is working. Then you can try with 12 seconds (the duration of the `yes/no` pattern).
 
 If the progress bar is frozen at 0% for too long, cancel the simulation and:
 
-- Look at the [OpenModelica](https://www.openmodelica.org/) OMEdit console for error messages (some will be displayed only when the simulation is cancelled)
+- Look at the [OpenModelica](https://www.openmodelica.org/) `OMEdit` console for error messages (some will be displayed only when the simulation is cancelled)
 - Check if all VHT processes have been killed 
 
 Generally the problem is a wrong path somewhere. When everything is working, the window should look like this:
@@ -250,7 +256,7 @@ If you select the signal `farSpeaker` and `tf` in the block echoCanceller, you'l
 
 An IDE can also be used to compile the `.axf` if you don't have the CMSIS Build tools installed.
 
-The project `EchoCanceller.uvprojx` can be used for uVision.
+The project `EchoCanceller.uvprojx` can be used for `uVision`.
 
 Some packs will have to be installed. Most are available from the pack manager.
 
@@ -262,7 +268,7 @@ You can use the `ARM.SDF.0.3.0.pack`.
 
 In case of the use of an IDE, [OpenModelica](https://www.openmodelica.org/) must not launch the VHT since the VHT will be launched from the IDE.
 
-The `params.py` script must be modified to disable the automatic launch:
+The `params.py` script in folder `BuildC` must be modified to disable the automatic launch:
 
 ![DontLaunchVHT](DontLaunchVHT.PNG)
 
@@ -280,9 +286,16 @@ You should see the simulation starting in the Modelica simulator's console:
 
 ![VHTStarted](VHTStarted.PNG)
 
-And in the IDE (uVision example), you should see:
+And in the IDE (`uVision` example), you should see:
 
 ![uVisionExecution](uVisionExecution.PNG)
 
 
 
+If the simulator was build and run from the `OMEdit` UI then the procedure is the same:
+
+- You need to set the parameter `launchVHT` to `false` in the block `echoCanceller.vhtMulti`
+  - It can be changed in the `Variables` window and the simulation just relaunched after this change
+  - Or it can be changed in the source code and the simulation rebuilt after this change
+- You need to launch the simulation from `OMEdit`
+- Then you can start the simulation in the IDE
