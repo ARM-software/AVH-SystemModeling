@@ -59,7 +59,7 @@ This script will :
 - compile the [Modelica](https://www.openmodelica.org/) model to C code
 - compile the C code to generate a [Modelica](https://www.openmodelica.org/) simulator
 - Update the parameters of the simulation
-- Launch the [Modelica](https://www.openmodelica.org/) simulator (which will launch the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html))
+- Launch the [Modelica](https://www.openmodelica.org/) simulator (which will launch the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) )
 - Generate a plot from the output of the [Modelica](https://www.openmodelica.org/) simulator using Python
 
 During compilation of the [Modelica](https://www.openmodelica.org/) model to C code, you should see (on the cloud):
@@ -78,11 +78,11 @@ true
 
 If you see any false, it means one of the commands in the script `echoLinux.mos` has failed.
 
-If this is successful and the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) has been launched, you should see the output:
+If this is successful and the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) has been launched, you should see the output:
 
 ![simulatorStart](simulatorStart.PNG)
 
-It is a mix of output from the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) and from the [Modelica](https://www.openmodelica.org/) simulator.
+It is a mix of output from the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) and from the [Modelica](https://www.openmodelica.org/) simulator.
 
 Once the simulation has booted, you should start to see some keyword recognition in the console.
 

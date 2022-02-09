@@ -2,16 +2,16 @@
 
 ## Introduction
 
-This demo is integrating software for an echo canceller and keyword spotting. The code is running on a Cortex-M55 on the [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT). The VHT is interacting with a model of the room acoustic implemented with [OpenModelica](https://www.openmodelica.org/).
+This demo is integrating software for an echo canceller and keyword spotting. The code is running on a Cortex-M55 on the [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) . The [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) is interacting with a model of the room acoustic implemented with [OpenModelica](https://www.openmodelica.org/).
 
 The simulation is containing two simulators:
 
-- The [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT) where the Cortex-M55 application is run
+- The [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) where the Cortex-M55 application is run
 - The simulator generated with  [OpenModelica](https://www.openmodelica.org/). It is implementing a model of the room acoustic : it is a digital twin
 
-The simulator is launching the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html).
+The simulator is launching the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) .
 
-The [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) is connecting to the [Modelica](https://www.openmodelica.org/) simulator using sockets.
+The [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) is connecting to the [Modelica](https://www.openmodelica.org/) simulator using sockets.
 
 ![architecture](architecture.png)
 
@@ -83,7 +83,11 @@ This architecture can be implemented with different blocks (the diagram will be 
 We are using two different implementations:
 
 * WavEcho : The echo canceller is not used. The block is just propagating the signals 
-* VHTEcho : the `echoCanceller` block is implemented with the VHT block and the VHT is running the [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp) and the [CMSIS-DSP Synchronous Dataflow](https://github.com/ARM-software/CMSIS_5/tree/develop/CMSIS/DSP/SDFTools) 
+* VHTEcho : the `echoCanceller` block including a VHT block
+
+VHT is the implementation of the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) we are using and it means : Virtual Hardware Target. The VHT Modelica block is implementing the communication between the Modelica simulator and the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) 
+
+The [speex DSP library](https://gitlab.xiph.org/xiph/speexdsp), [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) network and the [CMSIS-DSP Synchronous Dataflow](https://github.com/ARM-software/CMSIS_5/tree/develop/CMSIS/DSP/SDFTools) are running on the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) .
 
 The [Modelica](https://www.openmodelica.org/) ARM libraries for this example (as displayed in `OMEdit`) are:
 
@@ -165,7 +169,7 @@ It is encoded by the script `graph.py` in folder `sources`. The SDF is generatin
 
 The scheduling of the SDF is only based upon the data flow dependencies. If we need to implement additional constraints coming from the environment, then we need to express those constraints as new data flow dependencies.
 
-To ensure that VHT and Modelica will be able to interact without dead lock due to the feedback loop, we need to interleave the input and output nodes in the SDF scheduling.
+To ensure that the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) and Modelica will be able to interact without dead lock due to the feedback loop, we need to interleave the input and output nodes in the SDF scheduling.
 
 The easier way to do it is by:
 
@@ -177,9 +181,9 @@ The edge with a FIFO of size 1 between `allMics` and `allSpeakers` is enforcing 
 
 #### MFCC
 
-It is the MFCC like processing done by the original Microspeech example.
+It is the MFCC like processing done by the original [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) example.
 
-It is doing a bit more than just a MFCC since there is some noise reduction and gain control so in original Microspeech it is not named MFCC.
+It is doing a bit more than just a MFCC since there is some noise reduction and gain control so in original [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) it is not named MFCC.
 
 #### Recognition frequency
 
@@ -223,7 +227,7 @@ At this point, the script cannot know what is the DMA buffer size. So it is hard
 
 It adds one additional packet of delay when doing an input -> output in SDF. So a total of 3 packets of delay.  The SDF flow being responsible for 2.
 
-For the VHT <-> Modelica communication protocol : each script is identifying itself at connection with:
+For the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) <-> Modelica communication protocol : each script is identifying itself at connection with:
 
 * The type of IO (input or output)
 * The ID (starting at 0 for input and output)
@@ -280,9 +284,9 @@ Used for the room modeling since the output of `pyroomacoustic` is a digital FIR
 
 The README in the microspeech folder is listing all changes done to the microspeech files.
 
-The files in this folder are covered by Microspeech license.
+The files in this folder are covered by [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) license.
 
-We are not using the Kiss FFT from Microspeech but the one from `speex` which normally is the same. But `speex` is adding a variation on the API. The current CMSIS-Packs used for TFLite have a dependency on the KissFFT pack.  To avoid name conflict, the KissFFT in libspeex has been renamed to `speexdsp_kiss_fft`
+We are not using the Kiss FFT from [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) but the one from `speex` which normally is the same. But `speex` is adding a variation on the API. The current CMSIS-Packs used for TFLite have a dependency on the KissFFT pack.  To avoid name conflict, the KissFFT in libspeex has been renamed to `speexdsp_kiss_fft`
 
 
 

@@ -50,7 +50,7 @@ Just get the [Windows version](https://www.openmodelica.org/download/download-wi
 
 `git clone https://github.com/ARM-software/VHT-SystemModeling.git`
 
-## Building the .axf to be run on the VHT with CMSIS command line tools
+## Building the .axf to be run on the Arm Virtual Hardware with CMSIS command line tools
 
 `cd VHT-SystemModeling/EchoCanceller`
 
@@ -109,7 +109,7 @@ This script will :
 - compile the [Modelica](https://www.openmodelica.org/) model to C code
 - compile the C code to generate a [Modelica](https://www.openmodelica.org/) simulator
 - Update the parameters of the simulation
-- Launch the [Modelica](https://www.openmodelica.org/) simulator (which will launch the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html))
+- Launch the [Modelica](https://www.openmodelica.org/) simulator (which will launch the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) )
 - Generate a plot from the output of the [Modelica](https://www.openmodelica.org/) simulator using Python
 
 #### Simulator building phase
@@ -134,11 +134,13 @@ If you're running in local, your paths may be different.
 
 #### Simulation running phase
 
-If this is successful and the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) has been launched, you should see the output:
+If this is successful and the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) has been launched, you should see the output:
 
 ![simulatorStart](simulatorStart.PNG)
 
-It is a mix of output from the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) and from the [Modelica](https://www.openmodelica.org/) simulator.
+It is a mix of output from the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) and from the [Modelica](https://www.openmodelica.org/) simulator.
+
+VHT is the name of the implementation of the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) which is used and it means : Virtual Hardware Target.
 
 Once the simulation has booted, you should start to see some keyword recognition in the console.
 
@@ -166,9 +168,9 @@ You can also use the scripts with the option noecho
 - `sh buildAndRun.sh noecho`
 - `sh run.sh noecho`
 
-With the option `noecho`, the [Modelica](https://www.openmodelica.org/) simulator used will be `Echo.WavEcho` instead of `Echo.VHTEcho`. This simulator is not using the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html). The VHT block is replaced by a pass-through block. The simulation will generate a `signalWithEcho.wav` with no echo cancellation. It is useful to have an idea of what is the signal with no pre-processing.
+With the option `noecho`, the [Modelica](https://www.openmodelica.org/) simulator used will be `Echo.WavEcho` instead of `Echo.VHTEcho`. This simulator is not using the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) . The VHT block is replaced by a pass-through block. The simulation will generate a `signalWithEcho.wav` with no echo cancellation. It is useful to have an idea of what is the signal with no pre-processing.
 
-This is not exactly the same signal has the one used by the VHT because the VHT signal processing chain is adding a small delay in the loop. So the far end source is slightly delayed compared to the simulation with no VHT.
+This is not exactly the same signal has the one used by the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) because the signal processing chain running on [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) is adding a small delay in the loop. So the far end source is slightly delayed compared to the simulation with no signal processing.
 
 If you use the `run.sh` script, you must use the `buildAndRun.sh` script at least once before and with the same option.
 
@@ -198,7 +200,7 @@ If you don't want to use the command line for building and running the simulatio
 
 If you're building in the cloud, you need to connect with [VNC](https://arm-software.github.io/VHT/main/infrastructure/html/run_ami_local.html#use_vnc) as explained on our [documentation](https://arm-software.github.io/VHT/main/infrastructure/html/run_ami_local.html#use_vnc)
 
-On Linux, to be sure the paths are set correctly and the VHT libraries can be found by [OpenModelica](https://www.openmodelica.org/), you need to launch `OMEdit` from a shell. Here is the expected output when you do it in the cloud (the IP displayed will depend on your VM in the cloud):
+On Linux, to be sure the paths are set correctly and the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html)  libraries can be found by [OpenModelica](https://www.openmodelica.org/), you need to launch `OMEdit` from a shell. Here is the expected output when you do it in the cloud (the IP displayed will depend on your VM in the cloud):
 
 ![LaunchOMEditFromShell](LaunchOMEditFromShell.PNG)
 
@@ -266,7 +268,7 @@ You can use the `ARM.SDF.0.3.0.pack`.
 
 ### Running
 
-In case of the use of an IDE, [OpenModelica](https://www.openmodelica.org/) must not launch the VHT since the VHT will be launched from the IDE.
+In case of the use of an IDE, [OpenModelica](https://www.openmodelica.org/) must not launch the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) since the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) will be launched from the IDE.
 
 The `params.py` script in folder `BuildC` must be modified to disable the automatic launch:
 
@@ -276,11 +278,11 @@ The `params.py` script in folder `BuildC` must be modified to disable the automa
 
 Once this change is done, you first launch the Modelica simulator as explained above either using the `run.sh`/`run.bat` script or the `buildAndRun.sh`
 
-The simulator will launch and wait for a VHT to connect. You should see:
+The simulator will launch and wait for an [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) to connect. You should see:
 
 ![WaitForVHT](WaitForVHT.PNG)
 
-Then, you can go to your IDE and launch the simulation. VHT will be launched and will connect to the Modelica simulation.
+Then, you can go to your IDE and launch the simulation. [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) will be launched and will connect to the Modelica simulation.
 
 You should see the simulation starting in the Modelica simulator's console:
 

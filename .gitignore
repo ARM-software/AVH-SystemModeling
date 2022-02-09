@@ -26,4 +26,5 @@ EchoCanceller/Objects/build.ninja
 EchoCanceller/Objects/cmake_install.cmake
 EchoCanceller/Objects/compile_commands.json
 EchoCanceller/RTE/_EchoCanceller.MainApp
+EchoCanceller/EchoCanceller.uvguix.*
 

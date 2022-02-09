@@ -1,12 +1,12 @@
-# Echo Canceller and Keyword spotting on ARM Virtual Hardware
+# Echo Canceller and Keyword spotting on Arm Virtual Hardware
 
-This demo is integrating software for an echo canceller and keyword spotting. The code is running on a Cortex-M55 on the [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT). The VHT is interacting with a model of the room acoustic implemented with [OpenModelica](https://www.openmodelica.org/).
+This demo is integrating software for an echo canceller and keyword spotting. The code is running on a Cortex-M55 on the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html). The  [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) is interacting with a model of the room acoustic implemented with [OpenModelica](https://www.openmodelica.org/).
 
 - [Quick start in the cloud](Documentation/QUICKSTART.md)
 - [More details about how to build and run the demo](Documentation/BUILDANDRUN.md)
   - On the cloud or in local
   - On Linux or on Windows
-  - From command line or using an IDE
+  - Building from command line or using an IDE
 - [Understanding what is inside the demo](Documentation/DEMO.md)
 
 ## Quick introduction
@@ -15,12 +15,12 @@ For more details, see the above links.
 
 The simulation is containing two simulators:
 
-- The [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) (VHT) where the Cortex-M55 application is run
+- The [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) where the Cortex-M55 application is run
 - The [OpenModelica](https://www.openmodelica.org/) generated simulator which is implementing the acoustic of the room : it is a digital twin
 
-The [OpenModelica](https://www.openmodelica.org/) generated simulator is launching the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html).
+The [OpenModelica](https://www.openmodelica.org/) generated simulator is launching the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html).
 
-The [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html) is connecting to the [Modelica](https://www.openmodelica.org/) simulator using sockets.
+The [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) is connecting to the [Modelica](https://www.openmodelica.org/) simulator using sockets.
 
 ![architecture](Documentation/architecture.png)
 
