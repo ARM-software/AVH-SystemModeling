@@ -1,10 +1,10 @@
-# VHT-SystemModeling
+# System Modeling with Arm Virtual Hardware
 
-This project is containing several demos where the [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html)  is connected to an external model of the world : a digital twin
+This repository contains examples that connect [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) to an a [**Modelica simulation**](https://modelica.org/) of a external physical system. 
 
-## List of demos
+## List of Examples
 
 - [Echo canceller and keyword spotting](EchoCanceller/README.md)
 
-More demos to come ...
+More examples will be provided soon ...
 
