@@ -16,7 +16,7 @@ For more details, see the above links.
 The simulation is containing two simulators:
 
 - The [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) where the Cortex-M55 application is run
-- The [OpenModelica](https://www.openmodelica.org/) generated simulator which is implementing the acoustic of the room : it is a digital twin
+- The [OpenModelica](https://www.openmodelica.org/) generated simulator which is implementing the acoustic of the room 
 
 The [OpenModelica](https://www.openmodelica.org/) generated simulator is launching the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html).
 

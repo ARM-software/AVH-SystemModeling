@@ -7,7 +7,7 @@ This demo is integrating software for an echo canceller and keyword spotting. Th
 The simulation is containing two simulators:
 
 - The [ARM Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) where the Cortex-M55 application is run
-- The simulator generated with  [OpenModelica](https://www.openmodelica.org/). It is implementing a model of the room acoustic : it is a digital twin
+- The simulator generated with  [OpenModelica](https://www.openmodelica.org/). It is implementing a model of the room acoustic 
 
 The simulator is launching the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) .
 
