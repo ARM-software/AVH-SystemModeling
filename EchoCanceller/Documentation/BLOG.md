@@ -6,7 +6,7 @@
   - [Keyword Spotting](#keyword-spotting)
   - [Machine Learning and Neural Networks](#machine-learning-and-neural-networks)
   - [Echo Cancellation and Noise Suppression](#echo-cancellation-and-noise-suppression)
-  - [Digital Twins and OpenModelica](#digital-twins-and-openmodelica)
+  - [System Modeling and OpenModelica](#system-modeling-and-openmodelica)
   - [Arm Virtual Hardware](#arm-virtual-hardware)
   - [The Application](#the-application)
 - [The Code Running on the Cortex-M55 Processor](#the-code-running-on-the-cortex-m55-processor)
@@ -28,7 +28,7 @@
 
 ## Introduction
 
-This blog illustrates how to deploy a tinyML keyword spotting application on an embedded system with echo cancellation. I will demonstrate how to solve common challenges that might occur during development. This demo runs on [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) connected to a digital twin.
+This blog illustrates how to deploy a tinyML keyword spotting application on an embedded system with echo cancellation. I will demonstrate how to solve common challenges that might occur during development. This demo runs on [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) connected to a model of the external world.
 
 ### Keyword Spotting
 
@@ -70,11 +70,11 @@ The goal of the signal processing chain is to remove, from the microphone record
 
 The details about the principle of this signal processing are explained in the text below.
 
-### Digital Twins and OpenModelica
+### System Modeling and OpenModelica
 
 When the signal processing (DSP) is a simple input – output system, you can develop and test your signal processing chain and neural network (the total system) by connecting it to files containing the test patterns: the test files.
 
-But, when the total system is relying on feedback loops, as is often the case with embedded systems, using test files is difficult since there is no feedback loop connecting the output files to the input files. In that case, a digital twin (a virtual representation of the external world) is needed to model the feedback loops.
+But, when the total system is relying on feedback loops, as is often the case with embedded systems, using test files is difficult since there is no feedback loop connecting the output files to the input files. In that case, a model of the external world (a virtual representation of the external world) is needed for the feedback loops.
 
 You can of course implement an ad ’hoc solution. But modeling the environment is a lot of work and it is better to rely on existing technologies.
 
@@ -147,7 +147,7 @@ The result of the [Microspeech](https://github.com/tensorflow/tflite-micro/tree/
 
 ## The Code Running on the Cortex-M55 Processor
 
-As described in the introduction, I am running real code on a model of a [Cortex-M55](https://www.arm.com/products/silicon-ip-cpu/cortex-m/cortex-m55) processor which is interacting with a digital twin. 
+As described in the introduction, I am running real code on a model of a [Cortex-M55](https://www.arm.com/products/silicon-ip-cpu/cortex-m/cortex-m55) processor which is interacting with an external model. 
 
 The [Cortex-M55](https://developer.arm.com/Processors/Cortex-M55) processor is the first Cortex-M that includes an implementation of the [Helium vector extension](https://www.arm.com/technologies/helium).
 
@@ -330,7 +330,7 @@ In the previous section, I explained what the compute graph is running on the [C
 
 This compute graph must take its samples from somewhere and, because of the requirements of echo cancelling, there must be a feedback loop: the output of our compute graph must influence the input of the compute graph.
 
-Therefore, our [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) must be connected to a digital twin: a virtual representation of the external world. The digital twin is implemented using [OpenModelica](https://www.openmodelica.org/) which is an open implementation of the [Modelica](https://modelica.org/) standard. [OpenModelica](https://www.openmodelica.org/) generates the C sources for a simulator from a model description. I call it “The simulator” or “The [Modelica](https://modelica.org/) simulator” in the following description.
+Therefore, our [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) must be connected to an external model: a virtual representation of the external world. The external model is implemented using [OpenModelica](https://www.openmodelica.org/) which is an open implementation of the [Modelica](https://modelica.org/) standard. [OpenModelica](https://www.openmodelica.org/) generates the C sources for a simulator from a model description. I call it “The simulator” or “The [Modelica](https://modelica.org/) simulator” in the following description.
 
 Here is the architecture of the system:
 
