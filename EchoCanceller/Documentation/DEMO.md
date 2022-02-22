@@ -1,5 +1,31 @@
 # Arm Cortex-M55 enabled keyword spotting with echo cancellation
 
+## Table of Contents
+
+- [Introduction](#introduction)
+  - [Keyword Spotting](#keyword-spotting)
+  - [Machine Learning and Neural Networks](#machine-learning-and-neural-networks)
+  - [Echo Cancellation and Noise Suppression](#echo-cancellation-and-noise-suppression)
+  - [Digital Twins and OpenModelica](#digital-twins-and-openmodelica)
+  - [Arm Virtual Hardware](#arm-virtual-hardware)
+  - [The Application](#the-application)
+- [The Code Running on the Cortex-M55 Processor](#the-code-running-on-the-cortex-m55-processor)
+  - [Principles of the Signal Processing Running on the Arm Virtual Hardware](#principles-of-the-signal-processing-running-on-the-arm-virtual-hardware)
+    - [Beamformer](#beamformer)
+    - [Adaptative Echo Canceller (AEC)](#adaptative-echo-canceller-aec)
+    - [Noise Suppression](#noise-suppression)
+  - [Integration of the Software Components on the Arm Virtual Hardware](#integration-of-the-software-components-on-the-arm-virtual-hardware)
+- [Arm Virtual Hardware and OpenModelica](#arm-virtual-hardware-and-openmodelica) 
+  - [Introduction](#introduction-1) 
+  - [Arm Virtual Hardware](#arm-virtual-hardware-1) 
+  - [OpenModelica](#openmodelica) 
+  - [The Architecture](#the-architecture)
+    - [Room Acoustic](#room-acoustic) 
+    - [Limitations of the Current Model](#limitations-of-the-current-model) 
+- [The Results](#the-results)
+- [Conclusion](#conclusion)
+- [References](#references)
+
 ## Introduction
 
 This blog illustrates how to deploy a tinyML keyword spotting application on an embedded system with echo cancellation. I will demonstrate how to solve common challenges that might occur during development. This demo runs on [**Arm Virtual Hardware**](https://www.arm.com/products/development-tools/simulation/virtual-hardware) connected to a digital twin.
