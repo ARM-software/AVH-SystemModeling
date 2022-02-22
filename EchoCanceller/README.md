@@ -7,5 +7,5 @@ This demo is integrating software for an echo canceller and keyword spotting. Th
   - On the cloud or in local
   - On Linux or on Windows
   - Building from command line or using an IDE
-- [Understanding what is inside the demo](Documentation/DEMO.md)
+- [Understanding what is inside the demo](Documentation/BLOG.md)
 - [Implementation details](ImplementationDetails.md) for the source code
