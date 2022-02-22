@@ -301,3 +301,7 @@ If the simulator was build and run from the `OMEdit` UI then the procedure is th
   - Or it can be changed in the source code and the simulation rebuilt after this change
 - You need to launch the simulation from `OMEdit`
 - Then you can start the simulation in the IDE
+
+## Implementation details
+
+Some [implementation](ImplementationDetails.md) details about the source code are available.

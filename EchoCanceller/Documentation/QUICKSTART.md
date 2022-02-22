@@ -103,3 +103,6 @@ You can re-run the simulation with the command:
 
 `sh run.sh`
 
+## Implementation Details
+
+Some [implementation](ImplementationDetails.md) details about the source code are available.
