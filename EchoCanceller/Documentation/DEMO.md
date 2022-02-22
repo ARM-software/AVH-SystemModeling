@@ -1,9 +1,5 @@
 # Arm Cortex-M55 enabled keyword spotting with echo cancellation
 
-
-
-[TOC]
-
 ## Introduction
 
 This blog illustrates how to deploy a tinyML keyword spotting application on an embedded system with echo cancellation. I will demonstrate how to solve common challenges that might occur during development. This demo runs on [**Arm Virtual Hardware**](https://www.arm.com/products/development-tools/simulation/virtual-hardware) connected to a digital twin.
