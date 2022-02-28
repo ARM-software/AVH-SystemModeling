@@ -15,13 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # --------------------------------------------------------------------------
-import sys
-
-sys.path.append("/home/ubuntu/CMSIS_5/CMSIS/DSP/SDFTools")
+from cmsisdsp.sdf.scheduler import *
 
 MICROSPEECH=True
-
-from sdf import *
 
 ### Define new types of Nodes 
 
