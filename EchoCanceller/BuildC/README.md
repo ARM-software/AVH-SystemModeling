@@ -2,7 +2,7 @@
 
 The `buildAndRun.sh` script is building the Modelica simulator and launching the demo.
 
-`run.sh` is just re-launching a demo without rebuilding everything. It is useful when you are just changing some simulation parameters or when you have changed the `.axf` running on the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html).
+`run.sh` is just re-launching a demo without rebuilding everything. It is useful when you are just changing some simulation parameters or when you have changed the `.axf` running on the [AVH](https://arm-software.github.io/AVH/main/overview/html/index.html).
 
 And there is a `clean.sh` to clean the generated files.
 

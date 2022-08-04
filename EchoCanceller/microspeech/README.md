@@ -129,7 +129,7 @@ cmsis-rtos header and mutex declaration
 ### recognize_commands.cc 
 
 Labels are no more coded by strings but by integers.
-The integer are then returned to the SDF and communicated outside of the [VHT](https://arm-software.github.io/VHT/main/overview/html/index.html)
+The integer are then returned to the SDF and communicated outside of the [VHT](https://arm-software.github.io/AVH/main/overview/html/index.html)
 
 
 ### recognize_commands.h
