@@ -90,7 +90,7 @@ This model must then be connected to the code implementing the signal processing
 
 The [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) I am using is providing a model of the Arm [Cortex-M55](https://developer.arm.com/Processors/Cortex-M55) processor that is running native code.
 
-The [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) services are currently available via the [Amazon Web Services (AWS) Marketplace](https://arm-software.github.io/VHT/main/infrastructure/html/index.html#AWS) and the [demo](https://github.com/ARM-software/VHT-SystemModeling) presented in this post can be run in the cloud.
+The [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) services are currently available via the [Amazon Web Services (AWS) Marketplace](https://arm-software.github.io/AVH/main/infrastructure/html/index.html#AWS) and the [demo](https://github.com/ARM-software/AVH-SystemModeling) presented in this post can be run in the cloud.
 
 ### The Application
 
@@ -346,7 +346,7 @@ At the end of the simulation, the simulator stops the execution of the [Arm Virt
 
 ### Arm Virtual Hardware 
 
-[Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) is described [here](https://arm-software.github.io/VHT/main/overview/html/index.html):
+[Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware) is described [here](https://arm-software.github.io/AVH/main/overview/html/index.html):
 
 https://www.arm.com/products/development-tools/simulation/virtual-hardware
 
@@ -435,11 +435,11 @@ The use of echo cancellation and noise suppression increased the performance of 
 
 The use of libraries like [CMSIS-NN](https://github.com/ARM-software/CMSIS_5/tree/develop/CMSIS/NN) (and [CMSIS-DSP](https://github.com/ARM-software/CMSIS_5/tree/develop/CMSIS/DSP) in a future version) enabled efficient processing making use of all the capabilities of the [Cortex-M55](https://developer.arm.com/Processors/Cortex-M55)  processor.
 
-You can now play with the demo by cloning our [VHT-SystemModeling GitHub](https://github.com/ARM-software/VHT-SystemModeling) repository and running it in the cloud.
+You can now play with the demo by cloning our [AVH-SystemModeling GitHub](https://github.com/ARM-software/AVH-SystemModeling) repository and running it in the cloud.
 
-To get started on this example, [click here](https://github.com/ARM-software/VHT-SystemModeling/blob/main/EchoCanceller/Documentation/QUICKSTART.md).
+To get started on this example, [click here](https://github.com/ARM-software/AVH-SystemModeling/blob/main/EchoCanceller/Documentation/QUICKSTART.md).
 
-For more detailed documentation about how to run and build, [click here](https://github.com/ARM-software/VHT-SystemModeling/blob/main/EchoCanceller/README.md).
+For more detailed documentation about how to run and build, [click here](https://github.com/ARM-software/AVH-SystemModeling/blob/main/EchoCanceller/README.md).
 
 ## References
 
@@ -452,9 +452,9 @@ For more detailed documentation about how to run and build, [click here](https:/
 * The experimental [CMSIS-DSP Synchronous Dataflow](https://github.com/ARM-software/CMSIS_5/tree/develop/CMSIS/DSP/SDFTools) 
 * [OpenModelica](https://www.openmodelica.org/)
 * [Modelica standard](https://modelica.org/modelicalanguage.html)
-* [VHT-SystemModeling](https://github.com/ARM-software/VHT-SystemModeling)
+* [AVH-SystemModeling](https://github.com/ARM-software/AVH-SystemModeling)
 * [Arm Virtual Hardware](https://www.arm.com/products/development-tools/simulation/virtual-hardware)
-* [Virtual Hardware GitHub](https://arm-software.github.io/VHT/main/overview/html/index.html)
+* [Virtual Hardware GitHub](https://arm-software.github.io/AVH/main/overview/html/index.html)
 * The [Microspeech](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/micro/examples/micro_speech) demo
 * [TensorFlow Lite](https://github.com/tensorflow/tflite-micro)
 * TensorFlow Lite [Microfrontend](https://github.com/tensorflow/tflite-micro/tree/main/tensorflow/lite/experimental/microfrontend)

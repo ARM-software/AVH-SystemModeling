@@ -4,7 +4,7 @@
 
 The scheduling of the SDF is only based upon the data flow dependencies. If we need to implement additional constraints coming from the environment, then we need to express those constraints as new data flow dependencies.
 
-To ensure that the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) and Modelica will be able to interact without dead lock due to the feedback loop, we need to interleave the input and output nodes in the SDF scheduling.
+To ensure that the [Arm Virtual Hardware](https://arm-software.github.io/AVH/main/overview/html/index.html) and Modelica will be able to interact without dead lock due to the feedback loop, we need to interleave the input and output nodes in the SDF scheduling.
 
 The easier way to do it is by:
 
@@ -62,7 +62,7 @@ At this point, the script cannot know what is the DMA buffer size. So it is hard
 
 It adds one additional packet of delay when doing an input -> output in SDF. So a total of 3 packets of delay.  The SDF flow being responsible for 2.
 
-For the [Arm Virtual Hardware](https://arm-software.github.io/VHT/main/overview/html/index.html) <-> Modelica communication protocol : each script is identifying itself at connection with:
+For the [Arm Virtual Hardware](https://arm-software.github.io/AVH/main/overview/html/index.html) <-> Modelica communication protocol : each script is identifying itself at connection with:
 
 * The type of IO (input or output)
 * The ID (starting at 0 for input and output)
